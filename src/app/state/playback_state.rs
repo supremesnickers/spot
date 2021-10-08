@@ -246,6 +246,21 @@ impl From<PlaybackAction> for AppAction {
 }
 
 #[derive(Clone, Debug)]
+pub enum PlaylistChange {
+    Reset,
+    InsertedAt(usize, usize),
+    AppendedAt(usize),
+    MovedUp(usize),
+    MovedDown(usize),
+}
+
+#[derive(Clone, Copy, Debug)]
+pub enum Device {
+    Local,
+    Connect,
+}
+
+#[derive(Clone, Debug)]
 pub enum PlaybackEvent {
     PlaybackPaused,
     PlaybackResumed,
@@ -257,6 +272,7 @@ pub enum PlaybackEvent {
     ShuffleChanged,
     PlaylistChanged,
     PlaybackStopped,
+    SwitchDevice(Device),
 }
 
 #[derive(Clone, Copy, Debug)]
