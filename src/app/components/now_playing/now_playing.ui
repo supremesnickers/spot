@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0" />
-  <template class="NowPlayingWidget" parent="AdwBin">
+  <template class="NowPlayingWidget" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="vexpand">1</property>
+    <property name="hexpand">1</property>
+    <child>
+      <object class="HeaderBarWidget" id="headerbar"></object>
+    </child>
     <child>
       <object class="GtkScrolledWindow" id="scrolled_window">
         <property name="vexpand">1</property>
         <child>
-        <object class="AdwClampScrollable">
-        <property name="maximum-size">900</property>
-          <child>
-            <object class="GtkListView" id="song_list">
-            </object>
-          </child>
-        </object>
+          <object class="AdwClampScrollable">
+            <property name="maximum-size">900</property>
+            <child>
+              <object class="GtkListView" id="song_list"></object>
+            </child>
+          </object>
         </child>
       </object>
     </child>
