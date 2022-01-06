@@ -6,7 +6,17 @@
     <property name="vexpand">1</property>
     <property name="hexpand">1</property>
     <child>
-      <object class="HeaderBarWidget" id="headerbar"></object>
+      <object class="GtkPopover" id="popover"></object>
+    </child>
+    <child>
+      <object class="HeaderBarWidget" id="headerbar">
+        <child>
+          <object class="GtkMenuButton" id="title">
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Now playing</property>
+          </object>
+        </child>
+      </object>
     </child>
     <child>
       <object class="GtkScrolledWindow" id="scrolled_window">
