@@ -515,7 +515,7 @@ impl SpotifyClient {
             .uri(format!("/v1/users/{}/playlists", id), Some(&query))
     }
 
-    pub(crate) fn get_player_devices(&self) -> SpotifyRequest<'_, (), ()> {
+    pub(crate) fn get_player_devices(&self) -> SpotifyRequest<'_, (), Devices> {
         self.request()
             .method(Method::GET)
             .uri("/v1/me/player/devices".to_string(), None)
