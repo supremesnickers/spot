@@ -5,9 +5,20 @@
     <property name="orientation">vertical</property>
     <property name="vexpand">1</property>
     <property name="hexpand">1</property>
-    <child>
-      <object class="GtkPopover" id="popover"></object>
-    </child>
+    <menu id="menu">
+      <section>
+        <attribute name="label" translatable="yes">Listening on</attribute>
+        <item>
+          <attribute name="custom">custom_content</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Refresh devices</attribute>
+          <attribute name="action">devices.refresh</attribute>
+        </item>
+      </section>
+    </menu>
     <child>
       <object class="HeaderBarWidget" id="headerbar">
         <child>
@@ -32,4 +43,19 @@
       </object>
     </child>
   </template>
+  <object class="GtkPopoverMenu" id="popover" />
+  <object class="GtkBox" id="custom_content">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkCheckButton" id="this_device_button">
+        <property name="label" translatable="yes">This device</property>
+        <property name="sensitive">0</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox" id="devices">
+        <property name="orientation">vertical</property>
+      </object>
+    </child>
+  </object>
 </interface>
