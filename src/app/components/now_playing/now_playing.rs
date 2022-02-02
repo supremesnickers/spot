@@ -157,7 +157,7 @@ impl NowPlayingWidget {
         self.widget().headerbar.as_ref()
     }
 
-    fn update_devices_list(&self, devices: &Vec<ConnectDevice>, active_device: &Device) {
+    fn update_devices_list(&self, devices: &Vec<ConnectDevice>) {
         let widget = self.widget();
         widget.title.set_popover(Option::<&gtk::Widget>::None);
         widget.this_device_button.set_sensitive(!devices.is_empty());
@@ -238,10 +238,8 @@ impl EventListener for NowPlaying {
                 self.model.refresh_available_devices();
             }
             AppEvent::PlaybackEvent(PlaybackEvent::AvailableDevicesChanged) => {
-                self.widget.update_devices_list(
-                    &*self.model.get_available_devices(),
-                    &*self.model.get_current_device(),
-                );
+                self.widget
+                    .update_devices_list(&*self.model.get_available_devices());
             }
             _ => (),
         }
