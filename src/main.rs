@@ -17,9 +17,11 @@ use libadwaita::ColorScheme;
 mod api;
 mod app;
 mod config;
+mod connect;
 mod dbus;
 mod player;
 mod settings;
+
 pub use config::VERSION;
 
 use crate::app::components::expose_widgets;
