@@ -168,7 +168,7 @@ impl PlaylistModel for PlaylistDetailsModel {
 
     fn enable_selection(&self) -> bool {
         self.dispatcher.dispatch(AppAction::EnableSelection(
-            self.selection_context().unwrap().clone(),
+            self.selection_context().unwrap(),
         ));
         true
     }
