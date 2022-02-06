@@ -284,7 +284,7 @@ pub enum PlaybackEvent {
     VolumeSet(f64),
     TrackChanged(String),
     SourceChanged,
-    ShuffleChanged,
+    ShuffleChanged(bool),
     PlaylistChanged,
     PlaybackStopped,
     SwitchedDevice(Device),
@@ -342,11 +342,11 @@ impl UpdatableState for PlaybackState {
             }
             PlaybackAction::SetShuffled(shuffled) if self.is_shuffled != shuffled => {
                 self.set_shuffled(shuffled);
-                vec![PlaybackEvent::ShuffleChanged]
+                vec![PlaybackEvent::ShuffleChanged(shuffled)]
             }
             PlaybackAction::ToggleShuffle => {
                 self.set_shuffled(!self.is_shuffled);
-                vec![PlaybackEvent::ShuffleChanged]
+                vec![PlaybackEvent::ShuffleChanged(self.is_shuffled)]
             }
             PlaybackAction::Next => {
                 if let Some(id) = self.play_next() {
