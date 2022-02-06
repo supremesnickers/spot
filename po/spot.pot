@@ -24,7 +24,7 @@ msgid "An error occured. Check logs for details!"
 msgstr ""
 
 #: src/app/components/device_selector/widget.rs:138
-#: src/app/components/device_selector/device_selector.ui:8
+#: src/app/components/device_selector/device_selector.ui:15
 msgid "Playing on this device"
 msgstr ""
 
@@ -104,6 +104,7 @@ msgid "Unnamed playlist"
 msgstr ""
 
 #: src/app/components/navigation/home.rs:87
+#: src/app/components/device_selector/device_selector.ui:20
 msgid "Now playing"
 msgstr ""
 
@@ -345,15 +346,15 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: src/app/components/device_selector/device_selector.ui:14
-msgid "Listening on"
+#: src/app/components/device_selector/device_selector.ui:31
+msgid "Playing on"
 msgstr ""
 
-#: src/app/components/device_selector/device_selector.ui:21
+#: src/app/components/device_selector/device_selector.ui:38
 msgid "Refresh devices"
 msgstr ""
 
-#: src/app/components/device_selector/device_selector.ui:31
+#: src/app/components/device_selector/device_selector.ui:48
 msgid "This device"
 msgstr ""
 
