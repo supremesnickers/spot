@@ -73,6 +73,8 @@ sources = files(
 './dbus/listener.rs',
 './dbus/mod.rs',
 './config.rs',
+'./connect/player.rs',
+'./connect/mod.rs',
 './app/rng.rs',
 './app/state/pagination.rs',
 './app/state/app_state.rs',

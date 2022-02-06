@@ -94,7 +94,7 @@ msgid "Unnamed playlist"
 msgstr ""
 
 #: src/app/components/navigation/home.rs:87
-#: src/app/components/now_playing/now_playing_model.rs:134
+#: src/app/components/now_playing/now_playing.ui:27
 msgid "Now playing"
 msgstr ""
 
@@ -148,6 +148,8 @@ msgstr ""
 
 #: src/main.rs:81
 msgid "Failed to open link!"
+#: src/connect/player.rs:52
+msgid "Connection to device lost!"
 msgstr ""
 
 #. A title that is shown when the user has not saved any playlists.
@@ -292,6 +294,18 @@ msgstr ""
 
 #: src/app/components/details/release_details.ui:68
 msgid "Copyright"
+msgstr ""
+
+#: src/app/components/now_playing/now_playing.ui:10
+msgid "Listening on"
+msgstr ""
+
+#: src/app/components/now_playing/now_playing.ui:17
+msgid "Refresh devices"
+msgstr ""
+
+#: src/app/components/now_playing/now_playing.ui:51
+msgid "This device"
 msgstr ""
 
 #. Login window title -- shouldn't be too long, but must mention Premium (a premium account is required).

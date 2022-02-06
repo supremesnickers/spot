@@ -132,9 +132,9 @@ impl SpotifyPlayer {
                 player.seek(position);
                 Ok(())
             }
-            Command::PlayerLoad(track) => {
+            Command::PlayerLoad { track, resume } => {
                 let player = player.as_mut().ok_or(SpotifyError::PlayerNotReady)?;
-                player.load(track, true, 0);
+                player.load(track, resume, 0);
                 Ok(())
             }
             Command::RefreshToken => {
