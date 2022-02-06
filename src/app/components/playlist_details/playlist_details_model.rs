@@ -13,7 +13,6 @@ use crate::app::{ActionDispatcher, AppAction, AppEvent, AppModel, BatchQuery, So
 
 pub struct PlaylistDetailsModel {
     pub id: String,
-    _editable_selection_context: SelectionContext,
     app_model: Rc<AppModel>,
     dispatcher: Box<dyn ActionDispatcher>,
 }
@@ -21,8 +20,7 @@ pub struct PlaylistDetailsModel {
 impl PlaylistDetailsModel {
     pub fn new(id: String, app_model: Rc<AppModel>, dispatcher: Box<dyn ActionDispatcher>) -> Self {
         Self {
-            id: id.clone(),
-            _editable_selection_context: SelectionContext::EditablePlaylist(id),
+            id,
             app_model,
             dispatcher,
         }
@@ -189,11 +187,11 @@ impl SimpleHeaderBarModel for PlaylistDetailsModel {
         false
     }
 
-    fn selection_context(&self) -> Option<&SelectionContext> {
+    fn selection_context(&self) -> Option<SelectionContext> {
         Some(if self.is_playlist_editable() {
-            &self._editable_selection_context
+            SelectionContext::EditablePlaylist(self.id.clone())
         } else {
-            &SelectionContext::Playlist
+            SelectionContext::Playlist
         })
     }
 

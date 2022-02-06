@@ -55,6 +55,9 @@ pub use user_details::*;
 mod now_playing;
 pub use now_playing::*;
 
+mod device_selector;
+pub use device_selector::*;
+
 mod saved_tracks;
 pub use saved_tracks::*;
 
@@ -88,6 +91,7 @@ pub fn expose_widgets() {
     playback::expose_widgets();
     selection::expose_widgets();
     headerbar::expose_widgets();
+    device_selector::expose_widgets();
 }
 
 impl dyn ActionDispatcher {
