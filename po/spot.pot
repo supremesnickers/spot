@@ -156,10 +156,12 @@ msgstr ""
 msgid "Connection restored"
 msgstr ""
 
-#: src/main.rs:81
-msgid "Failed to open link!"
-#: src/connect/player.rs:52
+#: src/connect/player.rs:56
 msgid "Connection to device lost!"
+msgstr ""
+
+#: src/main.rs:82
+msgid "Failed to open link!"
 msgstr ""
 
 #. A title that is shown when the user has not saved any playlists.
