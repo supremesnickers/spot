@@ -111,6 +111,7 @@ pub trait SpotifyApiClient {
         &self,
         device_id: String,
         uris: Vec<String>,
+        offset: usize,
     ) -> BoxFuture<SpotifyResult<()>>;
 
     fn player_state(&self) -> BoxFuture<SpotifyResult<ConnectPlayerState>>;
@@ -709,10 +710,19 @@ impl SpotifyApiClient for CachedSpotifyClient {
         &self,
         device_id: String,
         uris: Vec<String>,
+        offset: usize,
     ) -> BoxFuture<SpotifyResult<()>> {
         Box::pin(async move {
             self.client
-                .player_set_playing(&device_id, PlayRequest::Uris { uris })
+                .player_set_playing(
+                    &device_id,
+                    PlayRequest::Uris {
+                        uris,
+                        offset: PlayOffset {
+                            position: offset as u32,
+                        },
+                    },
+                )
                 .send_no_response()
                 .await?;
             Ok(())
