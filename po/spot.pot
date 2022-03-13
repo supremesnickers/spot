@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 13:00-0400\n"
+"POT-Creation-Date: 2022-03-13 13:32-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #. translators: This notification is the default message for unhandled errors. Logs refer to console output.
-#: src/app/batch_loader.rs:91 src/app/components/mod.rs:122
+#: src/app/batch_loader.rs:101 src/app/components/mod.rs:126
 msgid "An error occured. Check logs for details!"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgid "Playlists"
 msgstr ""
 
 #. translators: This is a sidebar entry to browse to saved tracks.
-#: src/app/components/navigation/factory.rs:82
+#: src/app/components/navigation/factory.rs:73
 #: src/app/components/navigation/home.rs:78
 msgid "Saved tracks"
 msgstr ""
@@ -151,11 +151,11 @@ msgstr ""
 msgid "Connection restored"
 msgstr ""
 
-#: src/connect/player.rs:56
+#: src/connect/player.rs:59
 msgid "Connection to device lost!"
 msgstr ""
 
-#: src/main.rs:82
+#: src/main.rs:83
 msgid "Failed to open link!"
 msgstr ""
 

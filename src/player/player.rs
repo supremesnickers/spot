@@ -22,7 +22,6 @@ use std::time::{Duration, SystemTime};
 
 use super::Command;
 use crate::app::credentials;
-use crate::app::state::Device;
 use crate::settings::SpotSettings;
 
 #[derive(Debug)]
@@ -77,7 +76,6 @@ impl Default for SpotifyPlayerSettings {
 }
 
 pub struct SpotifyPlayer {
-    api: Arc<dyn SpotifyApiClient + Send + Sync>,
     settings: RefCell<SpotifyPlayerSettings>,
     player: RefCell<Option<Player>>,
     mixer: RefCell<Option<Box<dyn Mixer>>>,
@@ -87,13 +85,7 @@ pub struct SpotifyPlayer {
 
 impl SpotifyPlayer {
     pub fn new(settings: SpotifyPlayerSettings, delegate: Rc<dyn SpotifyPlayerDelegate>) -> Self {
-    pub fn new(
-        api: Arc<dyn SpotifyApiClient + Send + Sync>,
-        settings: SpotifyPlayerSettings,
-        delegate: Rc<dyn SpotifyPlayerDelegate>,
-    ) -> Self {
         Self {
-            api,
             settings: RefCell::new(settings),
             mixer: RefCell::new(None),
             player: RefCell::new(None),

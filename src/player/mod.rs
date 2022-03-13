@@ -25,7 +25,6 @@ pub enum Command {
     PlayerSetVolume(f64),
     RefreshToken,
     ReloadSettings,
-    SwitchDevice(Device),
 }
 
 struct AppPlayerDelegate {
