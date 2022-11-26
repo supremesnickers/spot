@@ -56,8 +56,11 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="has-frame">0</property>
-        <property name="icon-name">media-playlist-consecutive-symbolic</property>
+        <property name="icon-name">media-playlist-repeat-symbolic</property>
         <property name="tooltip-text" translatable="yes">Repeat</property>
+        <style>
+          <class name="unselected-button"/>
+        </style>
       </object>
     </child>
   </template>

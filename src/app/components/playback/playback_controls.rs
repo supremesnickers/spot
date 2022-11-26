@@ -82,13 +82,18 @@ impl PlaybackControlsWidget {
     pub fn set_repeat_mode(&self, mode: RepeatMode) {
         let repeat_mode_icon = match mode {
             RepeatMode::Song => "media-playlist-repeat-song-symbolic",
-            RepeatMode::Playlist => "media-playlist-repeat-symbolic",
-            RepeatMode::None => "media-playlist-consecutive-symbolic",
+            RepeatMode::Playlist | RepeatMode::None => "media-playlist-repeat-symbolic",
         };
 
-        imp::PlaybackControlsWidget::from_instance(self)
-            .repeat
-            .set_icon_name(repeat_mode_icon);
+        let button = &imp::PlaybackControlsWidget::from_instance(self).repeat;
+
+        button.set_icon_name(repeat_mode_icon);
+
+        if let RepeatMode::None = mode {
+            button.add_css_class("unselected-button");
+        } else {
+            button.remove_css_class("unselected-button");
+        }
     }
 
     pub fn connect_play_pause<F>(&self, f: F)
