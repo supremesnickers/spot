@@ -50,6 +50,7 @@ pub trait SpotifyPlayerDelegate {
     fn refresh_successful(&self, token: String, token_expiry_time: SystemTime);
     fn report_error(&self, error: SpotifyError);
     fn notify_playback_state(&self, position: u32);
+    fn preload_next_track(&self);
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -62,6 +63,7 @@ pub enum AudioBackend {
 pub struct SpotifyPlayerSettings {
     pub bitrate: Bitrate,
     pub backend: AudioBackend,
+    pub gapless: bool,
     pub ap_port: Option<u16>,
 }
 
@@ -69,6 +71,7 @@ impl Default for SpotifyPlayerSettings {
     fn default() -> Self {
         Self {
             bitrate: Bitrate::Bitrate160,
+            gapless: true,
             backend: AudioBackend::PulseAudio,
             ap_port: None,
         }
@@ -127,6 +130,11 @@ impl SpotifyPlayer {
             Command::PlayerLoad(track) => {
                 let player = player.as_mut().ok_or(SpotifyError::PlayerNotReady)?;
                 player.load(track, true, 0);
+                Ok(())
+            }
+            Command::PlayerPreload(track) => {
+                let player = player.as_mut().ok_or(SpotifyError::PlayerNotReady)?;
+                player.preload(track);
                 Ok(())
             }
             Command::RefreshToken => {
@@ -202,6 +210,7 @@ impl SpotifyPlayer {
         let backend = settings.backend.clone();
 
         let player_config = PlayerConfig {
+            gapless: settings.gapless,
             bitrate: settings.bitrate,
             ..Default::default()
         };
@@ -327,6 +336,9 @@ async fn player_setup_delegate(
             }
             PlayerEvent::Playing { position_ms, .. } => {
                 delegate.notify_playback_state(position_ms);
+            }
+            PlayerEvent::TimeToPreloadNextTrack { .. } => {
+                delegate.preload_next_track();
             }
             _ => {}
         }
