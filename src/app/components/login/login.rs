@@ -22,7 +22,7 @@ mod imp {
         pub username: TemplateChild<gtk::Entry>,
 
         #[template_child]
-        pub password: TemplateChild<gtk::Entry>,
+        pub password: TemplateChild<gtk::PasswordEntry>,
 
         #[template_child]
         pub close_button: TemplateChild<gtk::Button>,
